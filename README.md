@@ -1,88 +1,62 @@
-# مشروع تحليل بيانات ألعاب الفيديو 🎮
-
-## نظرة عامة
-
-يهدف هذا المشروع إلى معالجة وتحليل بيانات ألعاب الفيديو باستخدام تقنيات علم البيانات وأدوات بايثون. يشمل المشروع مراحل استخراج البيانات، تنظيفها، تحليلها بصريًا، وتخزينها في قاعدة بيانات. تم تنفيذ خط الأنابيب باستخدام Apache Airflow بالإضافة إلى مكتبات مثل Pandas وMatplotlib وSeaborn.
-
+# Video Game Data Analysis Project 🎮
+## Overview
+This project aims to process and analyze video game data using data science techniques and Python tools. The project includes data extraction, cleaning, visual analysis, and storage in a database. The pipeline was implemented using Apache Airflow along with libraries such as Pandas, Matplotlib, and Seaborn.
 ---
-
-## محتويات المشروع
-
-- **Data_Analysis_Project.ipynb**: الدفتر التفاعلي الرئيسي الذي يحتوي على جميع خطوات التحليل، من استكشاف البيانات إلى التصور والنمذجة.
-- **merged_data.csv**: ملف البيانات الخام المدمجة، يحتوي على آلاف السجلات لألعاب الفيديو مع العديد من السمات (المبيعات، المنصات، التقييمات، إلخ).
-- **cleaned_data.csv**: ملف البيانات بعد التنظيف، جاهز للتحليل والنمذجة.
-- **airflow_project/dags/video_games.py**: كود DAG الخاص بـ Airflow الذي ينفذ مراحل التحميل، التقييم، التنظيف، التحليل البصري، وتخزين النتائج في قاعدة بيانات SQLite.
-
+## Project Contents
+- **Data_Analysis_Project.ipynb**: The main interactive notebook containing all analysis steps, from data exploration to visualization and modeling.
+- **merged_data.csv**: The raw merged data file, containing thousands of video game records with various attributes (sales, platforms, ratings, etc.).
+- **cleaned_data.csv**: The data file after cleaning, ready for analysis and modeling.
+- **airflow_project/dags/video_games.py**: Airflow DAG code that executes the loading, evaluation, cleaning, visual analysis stages, and stores the results in an SQLite database.
 ---
-
-## خطوات العمل
-
-1. **استكشاف البيانات**  
-   استيراد البيانات من `merged_data.csv` واستكشاف الأعمدة والأنواع والقيم المفقودة.
-
-2. **تقييم جودة البيانات وتنظيفها**  
-   - معالجة القيم المفقودة والبيانات المكررة.
-   - تحويل الأنواع (تواريخ، أسعار، نسب مئوية).
-   - تصحيح القيم غير المنطقية.
-   - تبسيط أعمدة أنماط اللعب.
-   - حفظ البيانات النظيفة في `cleaned_data.csv`.
-
-3. **تحليل البيانات بصريًا**  
-   إنشاء رسوم بيانية توضح:
-   - تطور المبيعات عبر السنوات.
-   - توزيع الألعاب حسب النوع والمنصة.
-   - العلاقة بين السعر والتقييمات.
-   - دعم المنصات المختلفة.
-   - مصفوفة الارتباط بين السمات الرقمية.
-
-4. **تخزين البيانات**  
-   إنشاء قاعدة بيانات SQLite وتخزين البيانات النظيفة فيها عبر DAG في Airflow.
-
+## Workflow Steps
+1. **Data Exploration**  
+   Importing data from `merged_data.csv` and exploring columns, types, and missing values.
+2. **Data Quality Assessment and Cleaning**  
+   - Handling missing values and duplicate data.
+   - Type conversion (dates, prices, percentages).
+   - Correcting illogical values.
+   - Simplifying gameplay style columns.
+   - Saving cleaned data to `cleaned_data.csv`.
+3. **Visual Data Analysis**  
+   Creating charts showing:
+   - Sales evolution over years.
+   - Distribution of games by genre and platform.
+   - Relationship between price and ratings.
+   - Support for different platforms.
+   - Correlation matrix between numerical attributes.
+4. **Data Storage**  
+   Creating an SQLite database and storing the cleaned data via a DAG in Airflow.
 ---
-
-## كيفية التشغيل
-
-1. **تشغيل Airflow**  
-   - تأكد من تثبيت Apache Airflow.
-   - شغل Airflow Scheduler وWebserver.
-   - DAG موجود في `airflow_project/dags/video_games.py`.
-
-2. **تشغيل التحليل التفاعلي**  
-   - افتح `Data_Analysis_Project.ipynb` باستخدام Jupyter Notebook أو JupyterLab.
-   - نفذ الخلايا بالترتيب لمشاهدة التحليل والرسوم البيانية.
-
+## How to Run
+1. **Running Airflow**  
+   - Make sure Apache Airflow is installed.
+   - Run Airflow Scheduler and Webserver.
+   - DAG is located in `airflow_project/dags/video_games.py`.
+2. **Running Interactive Analysis**  
+   - Open `Data_Analysis_Project.ipynb` using Jupyter Notebook or JupyterLab.
+   - Execute cells in order to view the analysis and charts.
 ---
-
-## أعمدة البيانات الرئيسية
-
-- **id**: معرف اللعبة
-- **Name**: اسم اللعبة
-- **Platform**: المنصة (Wii, NES, PS3, ...)
-- **Year**: سنة الإصدار
-- **Genre**: النوع (رياضة، مغامرة، ...)
-- **Publisher/Developer**: الناشر/المطور
-- **Sales**: المبيعات حسب المناطق والعالمية
-- **release_date**: تاريخ الإصدار
-- **genres**: الأنواع التفصيلية
-- **multiplayer_or_singleplayer**: نمط اللعب
-- **price/dc_price**: السعر والسعر بعد الخصم
-- **overall_review/detailed_review**: التقييمات
-- **reviews**: عدد المراجعات
-- **percent_positive**: نسبة التقييمات الإيجابية
-- **win_support/mac_support/lin_support**: دعم المنصات
-
+## Main Data Columns
+- **id**: Game identifier
+- **Name**: Game name
+- **Platform**: Platform (Wii, NES, PS3, ...)
+- **Year**: Release year
+- **Genre**: Genre (Sports, Adventure, ...)
+- **Publisher/Developer**: Publisher/Developer
+- **Sales**: Sales by region and worldwide
+- **release_date**: Release date
+- **genres**: Detailed genres
+- **multiplayer_or_singleplayer**: Gameplay mode
+- **price/dc_price**: Price and discounted price
+- **overall_review/detailed_review**: Ratings
+- **reviews**: Number of reviews
+- **percent_positive**: Percentage of positive ratings
+- **win_support/mac_support/lin_support**: Platform support
 ---
-
-## المتطلبات
-
-- Python 3.8 أو أحدث
-- مكتبات: pandas, numpy, matplotlib, seaborn, jupyter, airflow, sqlite3
-
+## Requirements
+- Python 3.8 or newer
+- Libraries: pandas, numpy, matplotlib, seaborn, jupyter, airflow, sqlite3
 ---
-
-## ملاحظات
-
-- تم تنظيف البيانات بعناية لضمان جودة التحليل.
-- يمكن تعديل كود Airflow أو الدفتر التفاعلي بسهولة لإضافة تحليلات أو تصورات جديدة.
-
----
+## Notes
+- Data has been carefully cleaned to ensure quality analysis.
+- Both Airflow code and the interactive notebook can be easily modified to add new analyses or visualizations.
